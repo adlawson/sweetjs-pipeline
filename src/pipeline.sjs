@@ -18,7 +18,7 @@ let (MACRO_OP) = macro {
             var length = list.length >>> 0;
             for (var i = 0; i < length; i++) {
                 var item = list[i];
-                if ('&' === item.token.value) {
+                if ('MACRO_REF' === item.token.value) {
                     referenced = true;
                     result.push.apply(result, refs);
                 } else {

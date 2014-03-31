@@ -86,7 +86,7 @@ suite('pipeline MACRO_OP', function () {
 
 });
 
-suite('reference &', function () {
+suite('reference MACRO_REF', function () {
 
     setup(function () {
         foo = stub();
@@ -94,36 +94,36 @@ suite('reference &', function () {
         baz = stub();
     });
 
-    test('`foo MACRO_OP bar(&, 123)` is `bar(foo, 123)`', function () {
-        foo MACRO_OP bar(&, 123);
+    test('`foo MACRO_OP bar(MACRO_REF, 123)` is `bar(foo, 123)`', function () {
+        foo MACRO_OP bar(MACRO_REF, 123);
 
         assert.isTrue(bar.calledOnce);
         assert.isTrue(bar.calledWith(foo, 123));
     });
 
-    test('`foo MACRO_OP bar(&, 1, 2, 3)` is `bar(foo, 1, 2, 3)`', function () {
-        foo MACRO_OP bar(&, 1, 2, 3);
+    test('`foo MACRO_OP bar(MACRO_REF, 1, 2, 3)` is `bar(foo, 1, 2, 3)`', function () {
+        foo MACRO_OP bar(MACRO_REF, 1, 2, 3);
 
         assert.isTrue(bar.calledOnce);
         assert.isTrue(bar.calledWith(foo, 1, 2, 3));
     });
 
-    test('`foo MACRO_OP bar(1, &, 2, 3)` is `bar(1, foo, 2, 3)`', function () {
-        foo MACRO_OP bar(1, &, 2, 3);
+    test('`foo MACRO_OP bar(1, MACRO_REF, 2, 3)` is `bar(1, foo, 2, 3)`', function () {
+        foo MACRO_OP bar(1, MACRO_REF, 2, 3);
 
         assert.isTrue(bar.calledOnce);
         assert.isTrue(bar.calledWith(1, foo, 2, 3));
     });
 
-    test('`foo MACRO_OP bar(1, 2, &, 3)` is `bar(1, 2, foo, 3)`', function () {
-        foo MACRO_OP bar(1, 2, &, 3);
+    test('`foo MACRO_OP bar(1, 2, MACRO_REF, 3)` is `bar(1, 2, foo, 3)`', function () {
+        foo MACRO_OP bar(1, 2, MACRO_REF, 3);
 
         assert.isTrue(bar.calledOnce);
         assert.isTrue(bar.calledWith(1, 2, foo, 3));
     });
 
-    test('`foo MACRO_OP bar(1, 2, 3, &)` is `bar(1, 2, 3, foo)`', function () {
-        foo MACRO_OP bar(1, 2, 3, &);
+    test('`foo MACRO_OP bar(1, 2, 3, MACRO_REF)` is `bar(1, 2, 3, foo)`', function () {
+        foo MACRO_OP bar(1, 2, 3, MACRO_REF);
 
         assert.isTrue(bar.calledOnce);
         assert.isTrue(bar.calledWith(1, 2, 3, foo));
