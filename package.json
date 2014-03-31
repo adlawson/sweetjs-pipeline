@@ -23,7 +23,7 @@
     },
     "scripts": {
         "build": "make -B",
-        "test": "./node_modules/.bin/sjs -m ./macro/pipeline.sjs -o ./test/build/pipeline.js ./test/macro/pipeline.sjs && ./node_modules/.bin/mocha --ui tdd --reporter spec ./test/build"
+        "test": "make test/macro -B && ./node_modules/.bin/sjs -m ./macro/pipeline.sjs -o ./test/build/pipeline.js ./test/macro/pipeline.sjs && ./node_modules/.bin/mocha --ui tdd --reporter spec ./test/build"
     },
     "devDependencies": {
         "chai": "~1.9.0",
