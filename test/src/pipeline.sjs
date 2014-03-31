@@ -85,4 +85,11 @@ suite('pipeline MACRO_OP', function () {
         assert.isTrue(baz.calledAfter(bar));
     });
 
+    test('`foo MACRO_OP bar(&, 123)` is `bar(foo, 123)`', function () {
+        foo MACRO_OP bar(&, 123);
+
+        assert.isTrue(bar.calledOnce);
+        assert.isTrue(bar.calledWith(foo, 123));
+    });
+
 });

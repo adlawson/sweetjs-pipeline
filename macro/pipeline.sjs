@@ -11,12 +11,30 @@
  */
 let (>>) = macro {
 
-    rule infix { $l:expr | $r($args...) } => {
-        $r($args..., $l)
+    case infix { $l:expr | _ $r($args (,) ...) } => {
+        var referenced = false;
+        var args = (function (list, refs) {
+            var result = [];
+            var length = list.length >>> 0;
+            for (var i = 0; i < length; i++) {
+                var item = list[i];
+                if ('&' === item.token.value) {
+                    referenced = true;
+                    result.push.apply(result, refs);
+                } else {
+                    result.push(item);
+                }
+            }
+
+            return result;
+        })(#{$args...}, #{$l});
+
+        letstx $args... = args;
+        return referenced ? #{$r($args (,) ...)} : #{$r($args (,) ..., $l)};
     }
 
-    rule infix { $l:expr | $r } => {
-        $r($l)
+    case infix { $l:expr | _ $r } => {
+        return #{$r($l)};
     }
 
 }
