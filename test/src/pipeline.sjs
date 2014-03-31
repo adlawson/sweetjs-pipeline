@@ -1,9 +1,8 @@
 var assert = require('chai').assert;
 var stub = require('sinon').stub;
+var foo, bar, baz;
 
 suite('pipeline MACRO_OP', function () {
-
-    var foo, bar, baz;
 
     setup(function () {
         foo = stub();
@@ -85,11 +84,49 @@ suite('pipeline MACRO_OP', function () {
         assert.isTrue(baz.calledAfter(bar));
     });
 
+});
+
+suite('reference &', function () {
+
+    setup(function () {
+        foo = stub();
+        bar = stub();
+        baz = stub();
+    });
+
     test('`foo MACRO_OP bar(&, 123)` is `bar(foo, 123)`', function () {
         foo MACRO_OP bar(&, 123);
 
         assert.isTrue(bar.calledOnce);
         assert.isTrue(bar.calledWith(foo, 123));
+    });
+
+    test('`foo MACRO_OP bar(&, 1, 2, 3)` is `bar(foo, 1, 2, 3)`', function () {
+        foo MACRO_OP bar(&, 1, 2, 3);
+
+        assert.isTrue(bar.calledOnce);
+        assert.isTrue(bar.calledWith(foo, 1, 2, 3));
+    });
+
+    test('`foo MACRO_OP bar(1, &, 2, 3)` is `bar(1, foo, 2, 3)`', function () {
+        foo MACRO_OP bar(1, &, 2, 3);
+
+        assert.isTrue(bar.calledOnce);
+        assert.isTrue(bar.calledWith(1, foo, 2, 3));
+    });
+
+    test('`foo MACRO_OP bar(1, 2, &, 3)` is `bar(1, 2, foo, 3)`', function () {
+        foo MACRO_OP bar(1, 2, &, 3);
+
+        assert.isTrue(bar.calledOnce);
+        assert.isTrue(bar.calledWith(1, 2, foo, 3));
+    });
+
+    test('`foo MACRO_OP bar(1, 2, 3, &)` is `bar(1, 2, 3, foo)`', function () {
+        foo MACRO_OP bar(1, 2, 3, &);
+
+        assert.isTrue(bar.calledOnce);
+        assert.isTrue(bar.calledWith(1, 2, 3, foo));
     });
 
 });
