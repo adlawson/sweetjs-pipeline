@@ -19,7 +19,7 @@
         "url": "git@github.com:adlawson/pipeline.sjs"
     },
     "engines": {
-        "node": ">=0.11.9"
+        "node": ">=0.8.0"
     },
     "scripts": {
         "build": "make -B",
