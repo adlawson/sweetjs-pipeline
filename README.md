@@ -5,7 +5,8 @@
 **Version:** *1.0.0*<br/>
 **Master build:** [![Master branch build status][travis-master]][travis]<br/>
 
-This library provides pipelining syntax to achieve functional composition with [Sweet.js][sweetjs].<br/>
+This library provides pipelining syntax to achieve naturally expressive functional composition with a little help from
+[Sweet.js][sweetjs].
 It can be installed in whichever way you prefer, but I recommend [NPM][npm].
 
 The motivation was to make reading functional composition more natural by writing left to right rather than inside out.
