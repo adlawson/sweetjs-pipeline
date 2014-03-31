@@ -1,0 +1,8 @@
+.travis.yml
+.vagrant
+Makefile
+node_modules
+npm-debug.log
+test
+src
+Vagrantfile
