@@ -41,6 +41,13 @@ foo >> bar >> baz(123); // Compiles to baz(123, bar(foo));
 foo >> bar(1, 2, 3) >> baz; // Compiles to baz(bar(1, 2, 3, foo));
 ```
 
+### Transpiling
+Whenever you use this or any other [Sweet.js][sweetjs] macro, you need to run it through `sjs`.
+```bash
+$ npm install pipeline.sjs sweet.js
+$ node_modules/.bin/sjs -m pipeline.sjs/macro mysweetfile.sjs
+```
+
 ### Custom operator
 You can change the operator used in this macro by running the build script with your new operator.
 ```bash
