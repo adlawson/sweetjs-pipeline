@@ -2,7 +2,7 @@
 
 <img src="http://media0.giphy.com/media/rI6cEnQqGILIs/giphy.gif" alt="Pipeline" align="right" />
 
-**Version:** *1.0.0*<br/>
+**Version:** *1.0.1*<br/>
 **Master build:** [![Master branch build status][travis-master]][travis]<br/>
 
 This library provides pipelining syntax to achieve naturally expressive functional composition with a little help from
