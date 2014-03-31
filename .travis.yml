@@ -3,7 +3,7 @@ node_js: ["0.11", "0.10", "0.9", "0.8", "0.6"]
 
 install: npm install
 
-before_script: npm run build
+before_script: make test/macro
 
 script: npm test
 
