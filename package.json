@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "homepage": "https://github.com/adlawson/pipeline.sjs",
-    "description": "Assignment through value destructuring",
+    "description": "Naturally expressive functional composition",
     "keywords": [
         "compose",
         "composition",
